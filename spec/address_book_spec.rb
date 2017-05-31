@@ -9,7 +9,7 @@ require_relative '../models/address_book'
     expect(entry.phone_number).to eql expected_number
     expect(entry.email).to eql expected_email
    end
-
+   
    describe "attributes" do
      it "should respond to entries" do
        expect(book).to respond_to(:entries)

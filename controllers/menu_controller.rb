@@ -14,7 +14,8 @@ require_relative '../models/address_book'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - Obliderate all entries"
+     puts "6 - Exit"
      print "Enter your selection: "
 
 
@@ -39,6 +40,11 @@ require_relative '../models/address_book'
        read_csv
        main_menu
      when 5
+       system "clear"
+       @address_book.obliderate
+       puts "All contacts have been obliderated forever!"
+       main_menu
+     when 6
        puts "Good-bye!"
 
        exit(0)
@@ -107,7 +113,7 @@ end
      name = gets.chomp
 
      match = @address_book.binary_search(name)
-system "clear"
+     system "clear"
 
      if match
        puts match.to_s
