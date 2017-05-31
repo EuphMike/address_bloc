@@ -8,7 +8,7 @@ require_relative '../models/address_book'
     expect(entry.name).to eql expected_name
     expect(entry.phone_number).to eql expected_number
     expect(entry.email).to eql expected_email
-  end
+   end
 
    describe "attributes" do
      it "should respond to entries" do
@@ -79,13 +79,36 @@ require_relative '../models/address_book'
        check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
      end
 
-     it "imports the 5th entry" do
-      book.import_from_csv("entries.csv")
-      # Check the fifth entry
-      entry_five = book.entries[4]
-      check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
-     end
+     describe "#import_from_csv2" do
+       it "imports the correct number of entries" do
 
+         book.import_from_csv2("entries_2.csv")
+         book_size = book.entries.size
+
+         expect(book_size).to eql 3
+       end
+
+       it "imports the 1st entry" do
+        book.import_from_csv2("entries_2.csv")
+
+        entry_one = book.entries[0]
+        check_entry(entry_one, "Clementine", "614-444-4444", "Clem@puppy.bark")
+       end
+
+       it "imports the 2nd entry" do
+         book.import_from_csv2("entries_2.csv")
+
+         entry_two = book.entries[1]
+         check_entry(entry_two, "Kelsey", "614-400-5555", "Kelsey@waddell.com")
+       end 
+
+       it "imports the 3rd entry" do
+       book.import_from_csv2("entries_2.csv")
+
+       entry_three = book.entries[2]
+       check_entry(entry_three, "Mike", "614-555-5555", "Mike@euphmike.com")
+       end
+     end
    end
    end
 
